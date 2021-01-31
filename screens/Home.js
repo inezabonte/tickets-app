@@ -16,7 +16,7 @@ export default function Home({navigation}) {
       <Card.Cover key={`card-cover-${data.index}`} style={{height:150}} source={{ uri: `${data.content.image}` }}/>
       <Card.Actions key={`card-action-${data.index}`}  style={{padding:0, margin:0}}>
           <Card.Content key={`card-content-${data.index}`}  style={{paddingLeft:20, paddingRight:20}}>
-              <Title key={`card-title-${data.index}`}  style={{fontSize:18,marginTop:0,marginBottom:0}} key={`title-${data.index}`}>{`${data.content.team1} vs ${data.content.team2}`}</Title>
+              <Title key={`card-title-${data.index}`}  style={{fontSize:18,marginTop:0,marginBottom:0, color:'#257AAA'}}>{`${data.content.team1} vs ${data.content.team2}`}</Title>
               <View key={`card-details-${data.index}`}  style={styles.cardDetails}>
                   
                   <View key={`details-${data.index}`} style={styles.detailsItem}>
@@ -30,11 +30,11 @@ export default function Home({navigation}) {
                   </View>
 
                   <View key={`details2-${data.index}`} style={styles.detailsItem2}>
-                    <Paragraph key={`item-${data.index}`} style={styles.cardParagraph}>
-                        <Text>{data.content.time}</Text>
+                    <Paragraph key={`item3-${data.index}`} style={styles.cardParagraph}>
+                        <Text key={`item-text-${data.index}`}>{data.content.time}</Text>
                     </Paragraph>
-                    <Paragraph key={`item2-${data.index}`} style={styles.cardParagraph}>
-                        <Text>{data.content.price}</Text>
+                    <Paragraph key={`item4-${data.index}`} style={styles.cardParagraph}>
+                        <Text key={`item-text2-${data.index}`}>{data.content.price}</Text>
                     </Paragraph>
                     
                   </View>
@@ -55,7 +55,7 @@ export default function Home({navigation}) {
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         {cardContent.map((content, index) =>(
-            <MainCard data={{content,index}}/>
+            <MainCard key={`main-card-${index}`} data={{content,index}}/>
         ))}
       </ScrollView>
     </SafeAreaView>

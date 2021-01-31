@@ -1,11 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Text, View, ImageBackground } from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, ImageBackground, TouchableOpacity, Image} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Paragraph, Title, Button } from 'react-native-paper';
+import Modal from 'react-native-modal';
 import styles from '../styles/Details';
+import {  } from 'react';
 
 export default function Details({ route }) {
+  const [visible, setIsVisible] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('Standard Ticket');
+
+  const changeVisibility = (value) => {
+      return setIsVisible(value);
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -26,7 +36,7 @@ export default function Details({ route }) {
             </ImageBackground>
           </View>
           <View key={`details-${route.params.index}`} style={styles.detailsContainer}>
-              <Title style={{color:'blue',fontSize:17}}>Description</Title>
+              <Title style={{color:'#257AAA',fontSize:17}}>Description</Title>
               <Paragraph numberOfLines={9} style={styles.parText}>
                   {route.params.content.description}
               </Paragraph>
@@ -54,11 +64,52 @@ export default function Details({ route }) {
           <View key={`button-${route.params.index}`} style={styles.buttonContainer}>
               <Button 
               mode='contained'
+              onPress={()=>changeVisibility(true)}
+              style={{backgroundColor:'#257AAA', width:'50%', }}
               >
-                  Get a TicketS
+                  Get a Ticket
               </Button>
           </View>
       </ScrollView>
+            <Modal
+            isVisible={visible}
+            onSwipeComplete={()=> changeVisibility(false)}
+            swipeDirection='down'
+            style={{ display:'flex', marginLeft:0,marginRight:0,marginBottom:0}}
+            >
+                <View key={`modal-${route.params.index}`} style={styles.modalContainer}>
+                    <View key={`picker-${route.params.index}`} style={styles.pickerContainer}>
+                    <Picker
+                        selectedValue={selectedValue}
+                        style={{  width: '100%'}}
+                        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+
+                    >
+                        <Picker.Item label="Standard Ticket" value="Standard Ticket" />
+                        <Picker.Item label="V.I.P Ticket" value="V.I.P Ticket" />
+                        <Picker.Item label="V.V.I.P Ticket" value="V.V.I.P Ticket" />
+                    </Picker>
+                    </View>
+                    <View key='ticketCount' style={styles.ticketCount}>
+                        <Text style={{fontSize:16, fontWeight:'500', color:'grey'}} key={`count`}>{selectedValue}</Text>
+                        <Text>x1</Text>
+                        <Text style={{fontSize:16, fontWeight:'500', color:'grey'}} key={`price`}>{route.params.content.price}</Text>
+                    </View>
+                    <View key='totalCount' style={styles.ticketCount}>
+                        <Text style={{fontSize:25, fontWeight:'bold'}} key={`total`}>Total</Text>
+                        <Text style={{fontSize:25, fontWeight:'bold'}} key={`totalPrice`}>{route.params.content.price}</Text>
+                    </View>
+                    <View key={`button-pay-${route.params.index}`} style={styles.momoButtonContainer}>
+                        <TouchableOpacity 
+                            style={styles.momoButton}
+                            onPress={() => changeVisibility(false)}
+                        >
+                            <Text style={{fontWeight:'bold'}}>Pay with MOMO</Text>
+                            <Image source={require('../assets/mtn.jpg')} style={{width:55,height:23}}/>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
     </View>
   );
 }
