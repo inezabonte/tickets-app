@@ -9,7 +9,7 @@ export default function LoginScreen({navigation}) {
     const handleSubmit = () => {
         Alert.alert("Confirm phone number",`A verification code will be sent to: +250${phoneNumber}`,[
             {text: 'cancel'},
-            {text: 'Confirm', onPress: () => navigation.nav}
+            {text: 'Confirm', onPress: () => navigation.navigate('Verification')}
         ])
     }
     const handleChange =(e) => {

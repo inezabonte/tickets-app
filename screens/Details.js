@@ -1,19 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { Text, View, ImageBackground, TouchableOpacity, Image} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Paragraph, Title, Button } from 'react-native-paper';
 import Modal from 'react-native-modal';
 import styles from '../styles/Details';
 import {  } from 'react';
 
-export default function Details({ route }) {
+export default function Details({ route, navigation }) {
   const [visible, setIsVisible] = useState(false);
   const [selectedValue, setSelectedValue] = useState('Standard Ticket');
 
   const changeVisibility = (value) => {
       return setIsVisible(value);
+  }
+
+  const handlePopup = () => {
+    changeVisibility(false)
+    return navigation.navigate('Ticket')
   }
 
   return (
@@ -78,18 +82,6 @@ export default function Details({ route }) {
             style={{ display:'flex', marginLeft:0,marginRight:0,marginBottom:0}}
             >
                 <View key={`modal-${route.params.index}`} style={styles.modalContainer}>
-                    <View key={`picker-${route.params.index}`} style={styles.pickerContainer}>
-                    <Picker
-                        selectedValue={selectedValue}
-                        style={{  width: '100%'}}
-                        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-
-                    >
-                        <Picker.Item label="Standard Ticket" value="Standard Ticket" />
-                        <Picker.Item label="V.I.P Ticket" value="V.I.P Ticket" />
-                        <Picker.Item label="V.V.I.P Ticket" value="V.V.I.P Ticket" />
-                    </Picker>
-                    </View>
                     <View key='ticketCount' style={styles.ticketCount}>
                         <Text style={{fontSize:16, fontWeight:'500', color:'grey'}} key={`count`}>{selectedValue}</Text>
                         <Text>x1</Text>
@@ -102,7 +94,7 @@ export default function Details({ route }) {
                     <View key={`button-pay-${route.params.index}`} style={styles.momoButtonContainer}>
                         <TouchableOpacity 
                             style={styles.momoButton}
-                            onPress={() => changeVisibility(false)}
+                            onPress={handlePopup}
                         >
                             <Text style={{fontWeight:'bold'}}>Pay with MOMO</Text>
                             <Image source={require('../assets/mtn.jpg')} style={{width:55,height:23}}/>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput} from 'react-native'
 import { Button } from 'react-native-paper'
 import { LinearGradient } from 'expo-linear-gradient'
 
-export default function VerificationScreen() {
+export default function VerificationScreen({navigation}) {
     return (
         <View style={styles.container}>
         <LinearGradient
@@ -24,6 +24,7 @@ export default function VerificationScreen() {
                 <Button
                 color='white'
                 mode='contained'
+                onPress={() => navigation.navigate('Home')}
                 >
                     verify
                 </Button>

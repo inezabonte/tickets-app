@@ -14,7 +14,7 @@ const TicketScreen = () => {
             <Text>Seats: 69</Text>
            </View>
            <Text>Price: 100FRW</Text>
-           <Button>Print</Button>
+           <Button title='Print' />
         </View>
     )
 }
