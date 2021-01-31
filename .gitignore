@@ -11,3 +11,10 @@ web-build/
 
 # macOS
 .DS_Store
+
+# npm staff
+package-lock.json
+
+# yarn staff
+yarn.lock
+yarn-error.log
