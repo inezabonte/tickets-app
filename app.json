@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "An app that allows you to purchase tickets for games",
+    "githubUrl": "https://github.com/inezabonte/tickets-app"
   }
 }

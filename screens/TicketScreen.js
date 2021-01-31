@@ -1,10 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, Button } from 'react-native'
+import { StyleSheet, Text, View, Image} from 'react-native'
+import { Button } from 'react-native-paper'
 import qrcode from '../assets/qr.png'
+
 const TicketScreen = () => {
     return (
         <View style={styles.container}>
-           <Image source={qrcode}></Image> 
+            <View style={styles.code}>
+                <Image source={qrcode}></Image> 
+            </View>
            <Text>Team A Vs Team B</Text>
            <View>
             <Text>Names: Ntirenganye Rene Promese</Text>
@@ -25,6 +29,7 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#fff'
     }
 })
