@@ -16,7 +16,7 @@ export default function Home({navigation}) {
       <Card.Cover key={`card-cover-${data.index}`} style={{height:150}} source={{ uri: `${data.content.image}` }}/>
       <Card.Actions key={`card-action-${data.index}`}  style={{padding:0, margin:0}}>
           <Card.Content key={`card-content-${data.index}`}  style={{paddingLeft:20, paddingRight:20}}>
-              <Title key={`card-title-${data.index}`}  style={{fontSize:18,marginTop:0,marginBottom:0}} key={`title-${data.index}`}>{`${data.content.team1} vs ${data.content.team2}`}</Title>
+              <Title key={`card-title-${data.index}`}  style={{fontSize:18,marginTop:0,marginBottom:0, color:'#257AAA'}}>{`${data.content.team1} vs ${data.content.team2}`}</Title>
               <View key={`card-details-${data.index}`}  style={styles.cardDetails}>
                   
                   <View key={`details-${data.index}`} style={styles.detailsItem}>
