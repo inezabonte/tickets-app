@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { Text, View, ImageBackground, TouchableOpacity, Image} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Paragraph, Title, Button, Divider } from 'react-native-paper';
+import { Paragraph, Title, Button } from 'react-native-paper';
 import Modal from 'react-native-modal';
 import styles from '../styles/Details';
 import {  } from 'react';
@@ -36,7 +36,7 @@ export default function Details({ route }) {
             </ImageBackground>
           </View>
           <View key={`details-${route.params.index}`} style={styles.detailsContainer}>
-              <Title style={{color:'blue',fontSize:17}}>Description</Title>
+              <Title style={{color:'#257AAA',fontSize:17}}>Description</Title>
               <Paragraph numberOfLines={9} style={styles.parText}>
                   {route.params.content.description}
               </Paragraph>
@@ -65,6 +65,7 @@ export default function Details({ route }) {
               <Button 
               mode='contained'
               onPress={()=>changeVisibility(true)}
+              style={{backgroundColor:'#257AAA', width:'50%', }}
               >
                   Get a Ticket
               </Button>

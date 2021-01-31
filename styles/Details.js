@@ -52,7 +52,7 @@ export default styles = StyleSheet.create({
           paddingLeft:15,
       },
       boldItem:{
-          color: 'blue',
+          color: '#257AAA',
           fontWeight:'bold',
       },
       buttonContainer:{
