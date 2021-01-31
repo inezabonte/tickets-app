@@ -1,23 +1,23 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Platform, StatusBar, Text } from 'react-native';
-import LoginScreen from './app/screens/LoginScreen';
-import VerificationScreen from './app/screens/VerificationScreen';
+import HomeScreen from './screens/Home';
+import DetailsScreen from './screens/Details';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import CustomNavigationBar from './screens/CustomNavigationBar';
 
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <LoginScreen/>
-      {/* <VerificationScreen/> */}
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home"
+        screenOptions={{
+          header: (props) => <CustomNavigationBar {...props} />,
+        }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
-  },
-});

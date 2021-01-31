@@ -1,0 +1,36 @@
+export const cardContent=[
+    {
+        team1: 'Laikers',
+        team2: 'Clippers',
+        when: 'Sunday 12-05-2021',
+        time: '06:00 PM',
+        where: 'National stadium',
+        price: '5000 Rwf',
+        remainingSeats: 9999,
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+         image:'https://picsum.photos/600',
+    },
+    {
+        team1: 'San Antonio',
+        team2: 'Clippers',
+        when: 'Sunday 12-05-2021',
+        time: '06:00 PM',
+        where: 'National stadium',
+        price: '5000 Rwf',
+        remainingSeats: 1000,
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+         image:'https://picsum.photos/650',
+    },
+    {
+        team1: 'Clippers',
+        team2: 'Memphis',
+        when: 'Sunday 12-05-2021',
+        time: '06:00 PM',
+        where: 'Kigali Arena',
+        price: '5000 Rwf',
+        remainingSeats: 22222,
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+        image:'https://picsum.photos/800',
+    },
+    
+]
