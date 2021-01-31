@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Platform, StatusBar } from 'react-native';
+import { StyleSheet, SafeAreaView, Platform, StatusBar, Text } from 'react-native';
 import LoginScreen from './app/screens/LoginScreen';
 import VerificationScreen from './app/screens/VerificationScreen';
 
@@ -7,7 +7,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <LoginScreen/>
-      <VerificationScreen/>
+      {/* <VerificationScreen/> */}
     </SafeAreaView>
   );
 }
