@@ -30,11 +30,11 @@ export default function Home({navigation}) {
                   </View>
 
                   <View key={`details2-${data.index}`} style={styles.detailsItem2}>
-                    <Paragraph key={`item-${data.index}`} style={styles.cardParagraph}>
-                        <Text>{data.content.time}</Text>
+                    <Paragraph key={`item3-${data.index}`} style={styles.cardParagraph}>
+                        <Text key={`item-text-${data.index}`}>{data.content.time}</Text>
                     </Paragraph>
-                    <Paragraph key={`item2-${data.index}`} style={styles.cardParagraph}>
-                        <Text>{data.content.price}</Text>
+                    <Paragraph key={`item4-${data.index}`} style={styles.cardParagraph}>
+                        <Text key={`item-text2-${data.index}`}>{data.content.price}</Text>
                     </Paragraph>
                     
                   </View>
@@ -55,7 +55,7 @@ export default function Home({navigation}) {
       </View>
       <ScrollView contentContainerStyle={styles.content}>
         {cardContent.map((content, index) =>(
-            <MainCard data={{content,index}}/>
+            <MainCard key={`main-card-${index}`} data={{content,index}}/>
         ))}
       </ScrollView>
     </SafeAreaView>

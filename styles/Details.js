@@ -59,6 +59,60 @@ export default styles = StyleSheet.create({
           marginTop:10,
           justifyContent: 'center',
           alignItems:'center'
-      }
+      },
+
+
+      modalContainer:{
+          backgroundColor:'white',
+          width:'100%',
+          height: '50%',
+          borderTopLeftRadius:30,
+          borderTopRightRadius:30,
+          position:'absolute',
+          bottom: 0,
+          marginBottom:0,
+          marginLeft:0,
+          alignItems:'center'
+      },
+      pickerContainer:{
+        display:'flex', 
+        borderWidth:1, 
+        borderColor:'black', 
+        width:'80%',height:'auto',
+        justifyContent:'center',
+        marginTop:20,
+        borderRadius:50,
+      },
+      ticketCount:{
+          display:'flex',
+          width:'80%',
+          flexDirection:'row',
+          justifyContent:'space-between',
+          marginTop:20, 
+      },
+     momoButton: {
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'space-around',
+        alignItems:'center',
+        width:'80%',
+        backgroundColor: '#fbcc0c',
+        padding: 10,
+        marginBottom: 20,
+        shadowColor: '#303838',
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 0.35,
+      },
+      momoButtonContainer:{
+          marginTop:10,
+          borderTopWidth:1,
+          display:'flex',
+          position:'absolute',
+          bottom:0,
+          height:'40%',
+          width:'80%',
+          justifyContent: 'center',
+          alignItems:'center',
+      },
   
   });
