@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "numberOne",
-    "slug": "numberOne",
+    "name": "tickets-app",
+    "slug": "tickets-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "An app that allows you to purchase tickets for games",
+    "githubUrl": "https://github.com/inezabonte/tickets-app"
   }
 }
