@@ -12,7 +12,7 @@ export const headerAction = (value) => dispatch => {
     }
 }
 
-export const homeContentAction = (value) => dispatch =>{
+export const displayContentAction = (value) => dispatch =>{
     dispatch({
         type: DISPLAY_CONTENT,
         payload: value

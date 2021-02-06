@@ -5,7 +5,6 @@ import styles from '../styles/Home';
 
 
 const TicketCard = ({data, navigation}) => {
-    console.log(navigation);
     return (
      <Card key={`card-${data.index}`} 
        style={styles.cardContainer} 

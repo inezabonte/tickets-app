@@ -1,5 +1,4 @@
 import { MENU_SHOW, MENU_HIDE, DISPLAY_CONTENT } from '../actions/types';
-import { cardContent } from '../../dummyData';
 
 const initialState ={
     displayMenu: false,
