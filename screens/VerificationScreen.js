@@ -1,11 +1,21 @@
-import React from 'react'
-import { StyleSheet, Text, View, TextInput} from 'react-native'
+import React, {useEffect, useState} from 'react'
+import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView} from 'react-native'
 import { Button } from 'react-native-paper'
 import { LinearGradient } from 'expo-linear-gradient'
+import { getToken } from '../twilio'
 
-export default function VerificationScreen({navigation}) {
+
+export default function VerificationScreen({route, navigation}) {
+    useEffect(() => {
+        // getToken(route.params)
+    },[])
+
+    const [token, setToken] = useState("")
+
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding': "height"}
+        style={styles.container}>
         <LinearGradient
         colors={["#6ADEED", "#4D9CC9", "#2A4C9D"]}
         style={styles.LinearBackground}
@@ -14,24 +24,30 @@ export default function VerificationScreen({navigation}) {
         >
             <View style={styles.form}>
                 <Text style={{color: 'white', textAlign: 'center', fontSize: 17}}>
-                    Enter the verification code sent to +250788569285
+                    Enter the verification code sent to +250{route.params}
                 </Text>
                 <TextInput
                 placeholder="Enter code"
                 placeholderTextColor='white'
+                textContentType='oneTimeCode'
+                value={token}
+                onChangeText={(e) => setToken(e)}
                 style={styles.input}
+                maxLength={6}
+                keyboardType='number-pad'
                 />
                 <Button
                 color='white'
                 mode='contained'
                 onPress={() => navigation.navigate('Home')}
+                disabled={!token}
                 >
                     verify
                 </Button>
 
             </View>
         </LinearGradient>
-     </View>
+     </KeyboardAvoidingView>
  )
 }
 

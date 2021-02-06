@@ -1,15 +1,18 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View, TextInput, Alert} from 'react-native'
+import { StyleSheet, Text, View, TextInput, Alert, KeyboardAvoidingView} from 'react-native'
 import { Button } from 'react-native-paper'
 import { LinearGradient } from 'expo-linear-gradient'
+import { Platform } from 'react-native'
 
 export default function LoginScreen({navigation}) {
     const [phoneNumber, setNumber] = useState("")
 
+    
+
     const handleSubmit = () => {
         Alert.alert("Confirm phone number",`A verification code will be sent to: +250${phoneNumber}`,[
             {text: 'cancel'},
-            {text: 'Confirm', onPress: () => navigation.navigate('Verification')}
+            {text: 'Confirm', onPress: () => navigation.navigate('Verification', phoneNumber)}
         ])
     }
     const handleChange =(e) => {
@@ -17,7 +20,9 @@ export default function LoginScreen({navigation}) {
     }
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding': "height"}
+        style={styles.container}>
             <LinearGradient
             colors={["#6ADEED", "#4D9CC9", "#2A4C9D"]}
             style={styles.LinearBackground}
@@ -27,16 +32,18 @@ export default function LoginScreen({navigation}) {
             <View style={styles.form}>
 
             <Text style={{color: 'white'}}>
-                Enter a phone number to get verification code
+                Enter a phone number to get verification code.
                 </Text>
 
 
                 <TextInput
-                placeholder='Your Phone number'
-                placeholderTextColor='white'
+                placeholder='ex: 712345678'
+                placeholderTextColor='#cae0e3'
                 style={styles.input}
                 value={phoneNumber}
                 onChangeText={handleChange}
+                maxLength={9}
+                keyboardType='number-pad'
                 />
 
                 
@@ -50,7 +57,7 @@ export default function LoginScreen({navigation}) {
                 </Button>
             </View>
            </LinearGradient>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 
