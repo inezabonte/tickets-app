@@ -1,17 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, Text, View, ScrollView } from 'react-native';
 import { Card,Title, Paragraph } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
 import { cardContent } from '../dummyData';
-import { headerAction } from '../redux/actions/headerAction';
 import styles from '../styles/Home';
 
-export default function Home({navigation}) {
-  const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(headerAction(true));
-  },[])
+export default function Purchased({navigation}) {
   const MainCard = ({data}) => {
  return (
   <Card key={`card-${data.index}`} 
@@ -24,26 +18,7 @@ export default function Home({navigation}) {
           <Card.Content key={`card-content-${data.index}`}  style={{paddingLeft:20, paddingRight:20}}>
               <Title key={`card-title-${data.index}`}  style={{fontSize:18,marginTop:0,marginBottom:0, color:'#257AAA'}}>{`${data.content.team1} vs ${data.content.team2}`}</Title>
               <View key={`card-details-${data.index}`}  style={styles.cardDetails}>
-                  
-                  <View key={`details-${data.index}`} style={styles.detailsItem}>
-                    
-                    <Paragraph key={`item-${data.index}`} style={styles.cardParagraph}>
-                        {data.content.when}
-                    </Paragraph>
-                    <Paragraph key={`item2-${data.index}`} style={styles.cardParagraph}>
-                        {data.content.where}
-                    </Paragraph>
-                  </View>
-
-                  <View key={`details2-${data.index}`} style={styles.detailsItem2}>
-                    <Paragraph key={`item3-${data.index}`} style={styles.cardParagraph}>
-                        <Text key={`item-text-${data.index}`}>{data.content.time}</Text>
-                    </Paragraph>
-                    <Paragraph key={`item4-${data.index}`} style={styles.cardParagraph}>
-                        <Text key={`item-text2-${data.index}`}>{data.content.price}</Text>
-                    </Paragraph>
-                    
-                  </View>
+                 
                   
               </View>
           </Card.Content>

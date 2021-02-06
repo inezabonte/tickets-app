@@ -1,9 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { View,StyleSheet } from 'react-native';
 import { Appbar, Button } from 'react-native-paper';
+import { headerAction } from '../redux/actions/headerAction';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function CustomNavigationBar({ navigation, previous }) {
-
+ const CustomNavigationBar = ({navigation, previous}) => {
+    // previous  ? console.log(previous.route, navigation) : console.log('+++++++++');
+    const dispatch = useDispatch();
+    useEffect(() =>{
+      dispatch(headerAction(false))
+    },[]);
+    const { displayMenu } = useSelector(state => state.header);
+    console.log('=============')
+    console.log(displayMenu);
+    console.log('------------');
     const routeName = previous ? previous.route.name : null;
     const headerHeight = routeName === 'Verification' ? 80 : 60;
     const [borderWidth, setBorderWidth] = useState({menu1:3, menu2:0, color1: 'orange', color2:'white'});
@@ -30,6 +40,15 @@ export default function CustomNavigationBar({ navigation, previous }) {
           borderBottomColor:'orange'
         }
       })
+      const handleHomeClick = () =>{
+        setBorderWidth({menu1:3,menu2:0, color1:'orange', color2:'white'});
+        return navigation.navigate('Home');
+      }
+      const handlePurchasedClick = () =>{
+        setBorderWidth({menu1:0,menu2:3, color2:'orange', color1:'white'})
+        navigation.setParams({from:'Purchase'})
+        return navigation.navigate('Purchased',{from:'Purchased'});
+      }
     
     return (
       <Appbar.Header style={{backgroundColor:'#257AAA',height:headerHeight}}>
@@ -38,8 +57,8 @@ export default function CustomNavigationBar({ navigation, previous }) {
             <View style={styles.headerContainer}>
                 <Appbar.Content title="Tickets Apps" />  
                 <View style={styles.menu}>
-                  <Button style={styles.butt1} color={borderWidth.color1} onPress={()=> setBorderWidth({menu1:3,menu2:0, color1:'orange', color2:'white'})}>HOME</Button>
-                  <Button style={styles.butt2} color={borderWidth.color2} onPress={()=> setBorderWidth({menu1:0,menu2:3, color2:'orange', color1:'white'})}>PURCHASED</Button>
+                  <Button style={styles.butt1} color={borderWidth.color1} onPress={handleHomeClick}>HOME</Button>
+                  <Button style={styles.butt2} color={borderWidth.color2} onPress={handlePurchasedClick}>PURCHASED</Button>
                 </View>
             </View>
           ) : <Appbar.Content title="Tickets App" />  
@@ -50,4 +69,6 @@ export default function CustomNavigationBar({ navigation, previous }) {
   }
 
 
-  
+
+  export default CustomNavigationBar;
+
