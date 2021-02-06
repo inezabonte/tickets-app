@@ -1,8 +1,9 @@
-import { HOME_MENU_CONTENT } from '../actions/types';
-import { cardContent } from '../../dummyData';
+import { HOME_MENU_CONTENT, PURCHASE_MENU_CONTENT } from '../actions/types';
+import { cardContent, ticketCardContent } from '../../dummyData';
 
 const initialState ={
-    homeCardContent: cardContent
+    homeCardContent: cardContent,
+    ticketCardContent: ticketCardContent
 }
 
 export const homeReducer = (state = initialState, action) =>{
@@ -11,6 +12,11 @@ export const homeReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 homeCardContent: action.payload
+            }
+        case PURCHASE_MENU_CONTENT:
+            return{
+                ...state,
+                ticketCardContent: action.payload
             }
         default :
         return state;

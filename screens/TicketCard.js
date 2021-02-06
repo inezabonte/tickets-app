@@ -1,48 +1,80 @@
 import React from 'react';
 import { Card,Title, Paragraph } from 'react-native-paper';
-import { Text, View } from 'react-native';
-import styles from '../styles/Home';
-
+import { Text, View, StyleSheet } from 'react-native';
 
 const TicketCard = ({data, navigation}) => {
     return (
      <Card key={`card-${data.index}`} 
        style={styles.cardContainer} 
-       onPress={() => navigation.navigate('Details', data)}
+       onPress={() => navigation.navigate('Ticket')}
        onLongPress={() => null}
      >
-         <Card.Cover key={`card-cover-${data.index}`} style={{height:150}} source={{ uri: `${data.content.image}` }}/>
-         <Card.Actions key={`card-action-${data.index}`}  style={{padding:0, margin:0}}>
-             <Card.Content key={`card-content-${data.index}`}  style={{paddingLeft:20, paddingRight:20}}>
-                 <Title key={`card-title-${data.index}`}  style={{fontSize:18,marginTop:0,marginBottom:0, color:'#257AAA'}}>{`${data.content.team1} vs ${data.content.team2}`}</Title>
-                 <View key={`card-details-${data.index}`}  style={styles.cardDetails}>
-                     
-                     <View key={`details-${data.index}`} style={styles.detailsItem}>
-                       
-                       <Paragraph key={`item-${data.index}`} style={styles.cardParagraph}>
-                           {data.content.when}
-                       </Paragraph>
-                       <Paragraph key={`item2-${data.index}`} style={styles.cardParagraph}>
-                           {data.content.where}
-                       </Paragraph>
-                     </View>
-   
-                     <View key={`details2-${data.index}`} style={styles.detailsItem2}>
-                       <Paragraph key={`item3-${data.index}`} style={styles.cardParagraph}>
-                           <Text key={`item-text-${data.index}`}>{data.content.time}</Text>
-                       </Paragraph>
-                       <Paragraph key={`item4-${data.index}`} style={styles.cardParagraph}>
-                           <Text key={`item-text2-${data.index}`}>{data.content.price}</Text>
-                       </Paragraph>
-                       
-                     </View>
-                     
-                 </View>
-             </Card.Content>
-         </Card.Actions>
+         <View style={styles.cardWrapper}>
+            <Card.Actions key={`card-action-${data.index}`}  style={styles.cardActions}>
+                <Card.Content key={`card-content-${data.index}`} >
+                    <Title key={`card-title-${data.index}`}  
+                    style={{fontSize:15,marginTop:0,marginBottom:0, color:'#257AAA'}}
+                    >
+                        {`${data.content.team1} vs ${data.content.team2}`}
+                    </Title>
+                    <Text>
+                        <Text style={styles.boldText}>Date of Event</Text> {data.content.dateOfEvent}
+                    </Text>
+                    <Text>
+                        <Text style={styles.boldText}>Date of Purchase</Text> {data.content.dateOfPurchase}
+                    </Text>
+                    <Text>
+                        <Text style={styles.boldText}>Address</Text> {data.content.address}
+                    </Text>
+                    <Text>
+                        <Text style={styles.boldText}>Seat Number</Text> {data.content.seatNumber}
+                    </Text>
+                    <Text>
+                        <Text style={styles.boldText}>Price</Text> {data.content.price}
+                    </Text>
+                </Card.Content>
+            </Card.Actions>
+            <Card.Cover key={`card-cover-${data.index}`} 
+                style={styles.cardCover} 
+                source={{ uri: `${data.content.QRCodeImage}` }}
+            />
+         </View>
      </Card>
    );
         
     }
 
 export default TicketCard;
+
+const styles = StyleSheet.create({
+    cardContainer:{
+        width: '95%',
+        marginTop:20,
+        display: 'flex',
+        flexDirection:'row'
+    },
+    cardWrapper:{
+        display: 'flex',
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+    cardCover:{
+        height: 150,
+        width: '40%',
+        padding:5,
+        margin:5
+    },
+    cardActions:{
+        width: '55%',
+        padding:0, 
+        margin:0,
+    },
+    boldText:{
+        fontWeight: 'bold',
+        color:'green',
+        fontSize: 13
+    }
+})
