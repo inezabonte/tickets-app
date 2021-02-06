@@ -1,4 +1,4 @@
-import { MENU_HIDE, MENU_SHOW } from "./types"
+import { MENU_HIDE, MENU_SHOW, DISPLAY_CONTENT } from "./types"
 
 export const headerAction = (value) => dispatch => {
     if(value){
@@ -10,4 +10,11 @@ export const headerAction = (value) => dispatch => {
             type: MENU_HIDE
         })
     }
+}
+
+export const homeContentAction = (value) => dispatch =>{
+    dispatch({
+        type: DISPLAY_CONTENT,
+        payload: value
+    })
 }

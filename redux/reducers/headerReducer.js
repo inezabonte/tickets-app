@@ -1,7 +1,9 @@
-import { MENU_SHOW, MENU_HIDE } from '../actions/types';
+import { MENU_SHOW, MENU_HIDE, DISPLAY_CONTENT } from '../actions/types';
+import { cardContent } from '../../dummyData';
 
 const initialState ={
-    displayMenu: false
+    displayMenu: false,
+    displayContent: 'Home',
 }
 
 export const headerReducer = (state = initialState, action) =>{
@@ -15,6 +17,11 @@ export const headerReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 displayMenu: false
+            }
+        case DISPLAY_CONTENT:
+            return{
+                ...state,
+                displayContent: action.payload
             }
         default :
         return state;

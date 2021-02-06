@@ -2,56 +2,22 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { SafeAreaView, Text, View, ScrollView } from 'react-native';
 import { Card,Title, Paragraph } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { cardContent } from '../dummyData';
 import { headerAction } from '../redux/actions/headerAction';
 import styles from '../styles/Home';
+import MainCard from './MatchCard';
+import TicketCard from './TicketCard';
 
 export default function Home({navigation}) {
   const dispatch = useDispatch();
+  const {homeCardContent} = useSelector(state => state.home);
+  const { displayContent } = useSelector(state => state.header);
+  
   useEffect(()=>{
     dispatch(headerAction(true));
   },[])
-  const MainCard = ({data}) => {
- return (
-  <Card key={`card-${data.index}`} 
-    style={styles.cardContainer} 
-    onPress={() => navigation.navigate('Details', data)}
-    onLongPress={() => null}
-  >
-      <Card.Cover key={`card-cover-${data.index}`} style={{height:150}} source={{ uri: `${data.content.image}` }}/>
-      <Card.Actions key={`card-action-${data.index}`}  style={{padding:0, margin:0}}>
-          <Card.Content key={`card-content-${data.index}`}  style={{paddingLeft:20, paddingRight:20}}>
-              <Title key={`card-title-${data.index}`}  style={{fontSize:18,marginTop:0,marginBottom:0, color:'#257AAA'}}>{`${data.content.team1} vs ${data.content.team2}`}</Title>
-              <View key={`card-details-${data.index}`}  style={styles.cardDetails}>
-                  
-                  <View key={`details-${data.index}`} style={styles.detailsItem}>
-                    
-                    <Paragraph key={`item-${data.index}`} style={styles.cardParagraph}>
-                        {data.content.when}
-                    </Paragraph>
-                    <Paragraph key={`item2-${data.index}`} style={styles.cardParagraph}>
-                        {data.content.where}
-                    </Paragraph>
-                  </View>
-
-                  <View key={`details2-${data.index}`} style={styles.detailsItem2}>
-                    <Paragraph key={`item3-${data.index}`} style={styles.cardParagraph}>
-                        <Text key={`item-text-${data.index}`}>{data.content.time}</Text>
-                    </Paragraph>
-                    <Paragraph key={`item4-${data.index}`} style={styles.cardParagraph}>
-                        <Text key={`item-text2-${data.index}`}>{data.content.price}</Text>
-                    </Paragraph>
-                    
-                  </View>
-                  
-              </View>
-          </Card.Content>
-      </Card.Actions>
-  </Card>
-);
-     
- }
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -60,9 +26,11 @@ export default function Home({navigation}) {
         <Title>Upcoming games</Title>
       </View>
       <ScrollView contentContainerStyle={styles.content}>
-        {cardContent.map((content, index) =>(
-            <MainCard key={`main-card-${index}`} data={{content,index}}/>
-        ))}
+        { displayContent === 'Home' ?
+        homeCardContent.map((content, index) =>(
+            <MainCard key={`main-card-${index}`} navigation={navigation} data={{content,index}}/>
+        )) : <Text>No Data yet</Text>
+      }
       </ScrollView>
     </SafeAreaView>
   );
