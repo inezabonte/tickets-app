@@ -2,15 +2,23 @@ import React, {useEffect, useState} from 'react'
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView} from 'react-native'
 import { Button } from 'react-native-paper'
 import { LinearGradient } from 'expo-linear-gradient'
-import { getToken } from '../twilio'
+import { getToken, verifyToken } from '../twilio'
 
 
 export default function VerificationScreen({route, navigation}) {
     useEffect(() => {
-        // getToken(route.params)
+        getToken(route.params)
     },[])
 
     const [token, setToken] = useState("")
+
+    const handleSubmit = async () => {
+       const resp =  await verifyToken(route.params, token)
+
+        if(resp){
+            return navigation.navigate('Home')
+        }
+    }
 
     return (
         <KeyboardAvoidingView
@@ -39,7 +47,7 @@ export default function VerificationScreen({route, navigation}) {
                 <Button
                 color='white'
                 mode='contained'
-                onPress={() => navigation.navigate('Home')}
+                onPress={handleSubmit}
                 disabled={!token}
                 >
                     verify
