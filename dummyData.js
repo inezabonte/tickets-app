@@ -33,4 +33,57 @@ export const cardContent=[
         image: 'https://firebasestorage.googleapis.com/v0/b/tickets-app-4626d.appspot.com/o/test%2Ftest%2FScreenshot%202021-01-31%20230525.png?alt=media&token=d4034dc4-901f-4395-9b4d-f7a076d5004e',
     },
     
+];
+
+
+export const ticketCardContent=[
+    {
+        team1: 'A.P.R',
+        team2: 'Rayon',
+        dateOfEvent: 'Sunday 12-05-2021',
+        timeOfEvent: '06:00 PM',
+        dateOfPurchase: 'Sunday 12-05-2021',
+        timeOfPurchase: '06:00 PM',
+        address: 'Amahoro National stadium',
+        price: '5000 Rwf',
+        seatNumber: 99,
+        QRCodeImage:'https://firebasestorage.googleapis.com/v0/b/tickets-app-4626d.appspot.com/o/test%2Ftest%2Fqr.png?alt=media&token=a54a0f23-2086-48a1-8372-5957ad39e46a',
+    },
+    {
+        team1: 'Rwanda',
+        team2: 'Congo',
+        dateOfEvent: 'Sunday 12-05-2021',
+        timeOfEvent: '06:00 PM',
+        dateOfPurchase: 'Sunday 12-05-2021',
+        timeOfPurchase: '06:00 PM',
+        address: 'Amahoro National stadium',
+        price: '5000 Rwf',
+        seatNumber: 99,
+        QRCodeImage:'https://firebasestorage.googleapis.com/v0/b/tickets-app-4626d.appspot.com/o/test%2Ftest%2Fqr.png?alt=media&token=a54a0f23-2086-48a1-8372-5957ad39e46a',
+    },
+    {
+        team1: 'Rwanda',
+        team2: 'Uganda',
+        dateOfEvent: 'Sunday 12-05-2021',
+        timeOfEvent: '06:00 PM',
+        dateOfPurchase: 'Sunday 12-05-2021',
+        timeOfPurchase: '06:00 PM',
+        address: 'Amahoro National stadium',
+        price: '5000 Rwf',
+        seatNumber: 99,
+        QRCodeImage:'https://firebasestorage.googleapis.com/v0/b/tickets-app-4626d.appspot.com/o/test%2Ftest%2Fqr.png?alt=media&token=a54a0f23-2086-48a1-8372-5957ad39e46a',
+    },
+    {
+        team1: 'Burundi',
+        team2: 'Rwanda',
+        dateOfEvent: 'Sunday 12-05-2021',
+        timeOfEvent: '06:00 PM',
+        dateOfPurchase: 'Sunday 12-05-2021',
+        timeOfPurchase: '06:00 PM',
+        address: 'Amahoro National stadium',
+        price: '5000 Rwf',
+        seatNumber: 99,
+        QRCodeImage:'https://firebasestorage.googleapis.com/v0/b/tickets-app-4626d.appspot.com/o/test%2Ftest%2Fqr.png?alt=media&token=a54a0f23-2086-48a1-8372-5957ad39e46a',
+    },
+    
 ]
